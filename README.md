@@ -17,7 +17,6 @@
 create user 'bloguser'@'%' identified by 'bitc5600';
 grant all privileges on *.* to 'bloguser'@'%';
 create database blog;
-use blog;
 ```
 
 ## MySQL 테이블 생성
