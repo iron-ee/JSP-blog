@@ -2,6 +2,7 @@ package com.cos.blog.domain.user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.cos.blog.config.DB;
@@ -28,6 +29,27 @@ public class UserDao {
 			DB.close(conn, pstmt);
 		}
 		return -1;
+	}
+	
+	public int findByUsername(String username) {
+		String sql = "SELECT * FROM user WHERE username = ?";
+		Connection conn = DB.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				return 1;	//있다
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {	// 무조건 실행
+			DB.close(conn, pstmt, rs);
+		}
+		return -1;	// 없다
 	}
 	
 	public void update() {	// 회원수정
