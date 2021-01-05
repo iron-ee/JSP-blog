@@ -12,7 +12,7 @@ public class Script {
 			out.println("<script>");
 			out.println("alert('"+ msg +"');");
 			out.println("history.back();");
-			out.println("<script>");
+			out.println("</script>");
 			out.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
