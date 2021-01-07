@@ -17,9 +17,19 @@
 		<filter-class>com.cos.blog.config.CharConfig</filter-class>
 	</filter>
 	
+	<filter>
+		<filter-name>jspConfig</filter-name>
+		<filter-class>com.cos.blog.config.JspConfig</filter-class>
+	</filter>
+	
 	<filter-mapping>
 		<filter-name>charConfig</filter-name>
 		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>jspConfig</filter-name>
+		<url-pattern>*.jsp</url-pattern>
 	</filter-mapping>
 
 </web-app>
