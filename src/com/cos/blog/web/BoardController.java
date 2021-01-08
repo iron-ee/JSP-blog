@@ -66,6 +66,14 @@ public class BoardController extends HttpServlet {
 			int page = Integer.parseInt(request.getParameter("page"));	// 최초 = 0, Next = 1, Next = 2
 			List<Board> boards = boardService.글목록보기(page);
 			request.setAttribute("boards", boards);
+			
+			// request.setAttribute("isEnd", true);
+			int boardCount = boardService.글개수();
+			int lastPage = (boardCount-1)/4;
+			double currentPosition = (double)page/(lastPage)*100;
+			
+			request.setAttribute("lastPage", lastPage);
+			request.setAttribute("currentPosition", currentPosition);
 			RequestDispatcher dis = request.getRequestDispatcher("board/list.jsp");
 			dis.forward(request, response);
 		}
