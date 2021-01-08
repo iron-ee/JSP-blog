@@ -9,6 +9,7 @@ public class DetailRespDto {
 	private String title;
 	private String content;
 	private int readCount;
+	private int userId;
 	private String username;
 	
 	public String getTitle() {
