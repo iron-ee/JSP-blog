@@ -12,18 +12,13 @@
 	<script>
 		function deleteById(boardId) {
 			// 요청과 응답을 json
-			var data = {
-				boardId: boardId
-				}
 			$.ajax({
 				type: "post",
-				url: "/blog/board?cmd=delete",
-				data: JSON.stringify(data),
-				contentType: "application/json; charset=utf-8",
+				url: "/blog/board?cmd=delete&id="+boardId,
 				dataType: "json"
 			}).done(function(result){
 					console.log(result);
-					if(result.status == "ok"){
+					if(result.statusCode == 1){
 						location.href="index.jsp";
 					}else{
 						alert("삭제에 실패하였습니다.");
