@@ -13,7 +13,18 @@ function addReply(data){
 
 function deleteReply(id){
 	// 세션의 유저의 id와 reply의 userId를 비교해서 같을때만!!
-	alert("댓글 아이디 : "+id);
+	$.ajax({
+		type: "post",
+		url: "/blog/reply?cmd=delete&id="+id,
+		dataType: "json"
+	}).done(function(result){
+		if(result.statusCode == 1){
+			console.log(result);
+			$("#reply-"+id).remove();
+		}else{
+			alert("삭제에 실패하였습니다.");
+		}
+	});
 }
 
 function replySave(userId, boardId) {
@@ -33,8 +44,8 @@ function replySave(userId, boardId) {
 	}).done(function(result) {
 		if (result.statusCode == 1) {
 			console.log(result);
-			//addReply(result.data);
-			location.reload();
+			addReply(result.data);
+			$("#content").val("");
 		} else {
 			alert("댓글쓰기 실패");
 		}

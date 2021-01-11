@@ -18,6 +18,10 @@ public class ReplyService {
 		return replyDao.save(dto);
 	}
 	
+	public int 댓글삭제(int id) {
+		return replyDao.deleteById(id);
+	}
+	
 	public Reply 댓글찾기(int id) {
 		return replyDao.findById(id);
 	}
