@@ -18,4 +18,15 @@ public class Script {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void responseData(HttpServletResponse response, String jsonData) {
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			out.print(jsonData);
+			out.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
