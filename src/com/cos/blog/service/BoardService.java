@@ -32,6 +32,10 @@ public class BoardService {
 		return boardDao.findAll(page);
 	}
 	
+	public List<Board> 글검색(String keyword, int page) {
+		return boardDao.findByKeyword(keyword, page);
+	}
+	
 	public DetailRespDto 글상세보기(int id) {
 		int result = boardDao.updateReadCount(id);
 		if (result == 1) {
@@ -43,6 +47,10 @@ public class BoardService {
 	
 	public int 글개수() {
 		return boardDao.count();
+	}
+	
+	public int 글개수(String keyword) {
+		return boardDao.count(keyword);
 	}
 
 }
